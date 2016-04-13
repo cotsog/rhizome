@@ -4,6 +4,7 @@ import HighChart from 'components/molecules/highcharts/HighChart'
 import format from 'utilities/format'
 
 class MapChart extends HighChart {
+
   setConfig () {
     const current_indicator = this.props.selected_indicators[0]
     const palette = this.getColorPalette(this.props.palette)
@@ -15,15 +16,6 @@ class MapChart extends HighChart {
           verticalAlign: 'bottom'
         }
       },
-      // legend: {
-      //   labelFormatter: {
-      //     formatter: function() {
-      //       debugger
-      //       console.log('this', this)
-      //       return 'k'
-      //     }
-      //   }
-      // },
       colorAxis: {
         dataClasses: this.getDataClasses(current_indicator, palette),
         reversed: current_indicator.good_bound < current_indicator.bad_bound
@@ -32,7 +24,7 @@ class MapChart extends HighChart {
     }
   }
 
-  setSeries () {
+  setSeries = function () {
     const props = this.props
     const current_indicator = this.props.selected_indicators[0]
     return [{
